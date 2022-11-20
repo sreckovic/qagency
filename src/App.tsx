@@ -1,24 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+
 import './App.css';
+
+import Posts from './pages/Posts';
+import SinglePost from './pages/SinglePost';
+
+const propsMessage = 'Hello from';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container mx-auto my-4'>
+      <Router>
+        <Routes>
+          <Route
+            path='/'
+            element={
+              <Posts
+                propsMessage={propsMessage}
+                componentName={'Posts Component'}
+              />
+            }
+          />
+          <Route
+            path='/posts'
+            element={
+              <Posts
+                propsMessage={propsMessage}
+                componentName={'Posts Component'}
+              />
+            }
+          />
+          <Route
+            path='/posts/:id/:userId'
+            element={
+              <SinglePost
+                propsMessage={propsMessage}
+                componentName={'SinglePost Component'}
+              />
+            }
+          />
+        </Routes>
+      </Router>
     </div>
   );
 }
